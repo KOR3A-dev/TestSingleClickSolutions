@@ -1,0 +1,78 @@
+<mat-sidenav-container class="example-container" >
+  <mat-sidenav-content><img src="https://freesvg.org/img/ftmath-sum.png" width="30px" height="30px"><strong>&nbsp; Matrix to matrix transposed</strong></mat-sidenav-content>
+</mat-sidenav-container>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 mt-4">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Convert : </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <form [formGroup]="matrixForm">
+            <div class="container">
+              <div class="row">
+                <div class="col-2"></div>
+                <div class="col-4">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Rows: </mat-label>
+                    <input matInput placeholder="enter a number" type="number" id="row" formControlName="row">
+                  </mat-form-field>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-4">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Columns: </mat-label>
+                    <input matInput placeholder="enter a number" type="number" id="column" formControlName="column">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12 text-center">
+                  <button (click)="generateMatrix(matrixForm.value.row,matrixForm.value.column)" [disabled]="!matrixForm.valid" mat-raised-button color="primary">Generate <mat-icon>arrow_forward</mat-icon></button>
+                  <br><br>
+                  <h2>Matrix Initial</h2>
+
+                  <div class="row">
+                    <div class="col-5"></div>
+                    <div class="col-4">
+                      <!-- Generate -->
+                      <div *ngIf="table != undefined" [innerHTML]="table | html"></div>
+                    </div>
+                    <div class="col-3"></div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12 text-center">
+
+                  <br><br>
+                  <button [disabled]="matrixForm.value.matrix_request == [] " mat-raised-button color="accent">Transposed <mat-icon>arrow_forward</mat-icon></button>
+
+                  <br><br>
+                  <h2>Matrix Transposed</h2>
+
+                  <div class="row">
+                    <div class="col-5"></div>
+                    <div class="col-4">
+                      <!-- Transposed -->
+                      <div *ngIf="table != undefined" [innerHTML]="tableTransposed | html"></div>
+                    </div>
+                    <div class="col-3"></div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
